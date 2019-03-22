@@ -1,4 +1,5 @@
 /*
+【剑指offer】
 找出数组中重复的数字
 
 题目描述
@@ -37,10 +38,15 @@ import java.util.HashSet;
 
 public class Solution02 {
     public static void main(String[] args) {
-
+        int num [] = {2, 3, 1, 0, 2, 5, 3};
+        int dup [] = new int[7];
+        duplicate_method2(num,num.length,dup);
+        for (int i = 0; i <dup.length ; i++) {
+            System.out.println(dup[i]);
+        }
     }
 
-    public boolean duplicate_method2(int numbers[],int length, int duplication[]){
+    public static boolean duplicate_method2(int numbers[],int length, int duplication[]){
         HashSet set = new HashSet();
         int j = 0;
         for (int i = 0; i < length ; i++) {
