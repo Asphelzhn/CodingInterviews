@@ -40,10 +40,35 @@ public class Book2Solution02 {
     public static void main(String[] args) {
         int num [] = {2, 3, 1, 0, 2, 5, 3};
         int dup [] = new int[num.length];
-        duplicate_method2(num,num.length,dup);
+        duplicate_method1(num,num.length,dup);
         for (int i = 0; i <dup.length ; i++) {
             System.out.println(dup[i]);
         }
+    }
+    private static void swap(int numbers[],int i ,int j){
+        int temp = numbers[i];
+        numbers[i] = numbers[j];
+        numbers[j] = temp ;
+    }
+    public static boolean duplicate_method1(int numbers[],int length, int duplication[]){
+        if(numbers==null || length<1){
+            return false;
+        }
+        int j = 0;
+        for (int i = 0; i <length ; i++) {
+            if(numbers[i]>=0 && numbers[i]<=9){
+                while (numbers[i] != i){
+                    if (numbers[numbers[i]] == numbers[i]){
+                        duplication[j++] = numbers[i];
+                        break;
+                    }
+                    swap(numbers,i,numbers[i]);
+
+                }
+            }
+            else return false;
+        }
+        return true;
     }
 
     public static boolean duplicate_method2(int numbers[],int length, int duplication[]){
