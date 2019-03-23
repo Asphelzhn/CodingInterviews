@@ -39,7 +39,7 @@ import java.util.HashSet;
 public class Book2Solution02 {
     public static void main(String[] args) {
         int num [] = {2, 3, 1, 0, 2, 5, 3};
-        int dup [] = new int[7];
+        int dup [] = new int[num.length];
         duplicate_method2(num,num.length,dup);
         for (int i = 0; i <dup.length ; i++) {
             System.out.println(dup[i]);
@@ -48,12 +48,18 @@ public class Book2Solution02 {
 
     public static boolean duplicate_method2(int numbers[],int length, int duplication[]){
         HashSet set = new HashSet();
+        if(numbers==null || length<1){
+            return false;
+        }
         int j = 0;
         for (int i = 0; i < length ; i++) {
-            if(!set.add(numbers[i])){
-                duplication[j] = numbers[i];
-                j++;
+            if(numbers[i]>=0 && numbers[i]<=9){
+                if(!set.add(numbers[i])){
+                    duplication[j] = numbers[i];
+                    j++;
+                }
             }
+            else return false;
         }
 
         return true;
