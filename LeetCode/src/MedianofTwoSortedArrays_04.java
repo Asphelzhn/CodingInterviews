@@ -65,5 +65,12 @@ public class MedianofTwoSortedArrays_04 {
         }
 
     }
+
+    public static void main(String[] args) {
+        int A[] ={1, 2, 3, 4, 5, 6, 7};
+        int B[] ={5, 6, 8, 10, 13, 15, 18, 20, 22};
+        double result = new MedianofTwoSortedArrays_04().findMedianSortedArrays(A,B);
+        System.out.println(result);
+    }
 }
 
