@@ -1,25 +1,25 @@
 /**
  * 4. Median of Two Sorted Arrays
- *
+ * <p>
  * There are two sorted arrays nums1 and nums2 of size m and n respectively.
- *
+ * <p>
  * Find the median of the two sorted arrays. The overall run time complexity should be O(log (m+n)).
- *
+ * <p>
  * You may assume nums1 and nums2 cannot be both empty.
- *
+ * <p>
  * Example 1:
- *
+ * <p>
  * nums1 = [1, 3]
  * nums2 = [2]
- *
+ * <p>
  * The median is 2.0
  * Example 2:
- *
+ * <p>
  * nums1 = [1, 2]
  * nums2 = [3, 4]
- *
+ * <p>
  * The median is (2 + 3)/2 = 2.5
- *
+ * <p>
  * 分析
  * 这是一道非常经典的题。这题更通用的形式是，给定两个已经排序好的数组，找到两者所有元素中第k大的元素。
  * O(m+n)的解法比较直观，直接merge两个数组，然后求第k大的元素。
@@ -39,13 +39,18 @@
  */
 public class MedianofTwoSortedArrays_04 {
     public double findMedianSortedArrays(final int[] A, final int[] B) {
-
+        int length = A.length + B.length;
+        if (length % 2 == 0) {
+            return (findKth(A, 0, B, 0, length / 2) + findKth(A, 0, B, 0, length / 2 + 1)) / 2.0;
+        } else {
+            return findKth(A, 0, B, 0, length / 2 + 1);
+        }
 
     }
 
     private static int findKth(final int[] A, int ai, final int[] B, int bi, int k) {
         //always assume that A is shorter than B
-        
+
     }
 }
 
