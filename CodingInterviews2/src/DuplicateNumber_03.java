@@ -36,7 +36,7 @@ num[i]: 0 1 2 2 3 4
 
 import java.util.HashSet;
 
-public class Book2Solution02 {
+public class DuplicateNumber_03 {
     public static void main(String[] args) {
         int num [] = {2, 3, 1, 0, 2, 5, 3};
         int dup [] = new int[num.length];
