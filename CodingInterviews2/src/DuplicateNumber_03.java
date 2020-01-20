@@ -38,56 +38,57 @@ import java.util.HashSet;
 
 public class DuplicateNumber_03 {
     public static void main(String[] args) {
-        int num [] = {2, 3, 1, 0, 2, 5, 3};
-        int dup [] = new int[num.length];
-        duplicate_method1(num,num.length,dup);
-        for (int i = 0; i <dup.length ; i++) {
+        int num[] = {2,4,3,1,4};
+        int dup[] = new int[num.length];
+        duplicate_method1(num, num.length, dup);
+        for (int i = 0; i < dup.length; i++) {
             System.out.println(dup[i]);
         }
     }
-    private static void swap(int numbers[],int i ,int j){
+
+    private static void swap(int numbers[], int i, int j) {
         int temp = numbers[i];
         numbers[i] = numbers[j];
-        numbers[j] = temp ;
-    }
-    public static boolean duplicate_method1(int numbers[],int length, int duplication[]){
-        if(numbers==null || length<1){
-            return false;
-        }
-        int j = 0;
-        for (int i = 0; i <length ; i++) {
-            if(numbers[i]>=0 && numbers[i]<=9){
-                while (numbers[i] != i){
-                    if (numbers[numbers[i]] == numbers[i]){
-                        duplication[j++] = numbers[i];
-                        break;
-                    }
-                    swap(numbers,i,numbers[i]);
-
-                }
-            }
-            else return false;
-        }
-        return true;
+        numbers[j] = temp;
     }
 
-    public static boolean duplicate_method2(int numbers[],int length, int duplication[]){
-        HashSet set = new HashSet();
-        if(numbers==null || length<1){
+    public static boolean duplicate_method1(int numbers[], int length, int duplication[]) {
+        if (numbers == null || length <= 1) {
             return false;
         }
-        int j = 0;
-        for (int i = 0; i < length ; i++) {
-            if(numbers[i]>=0 && numbers[i]<=9){
-                if(!set.add(numbers[i])){
-                    duplication[j] = numbers[i];
-                    j++;
+        for (int i = 0; i < length; i++) {
+            while (numbers[i] != i){
+                if (numbers[i] == numbers[numbers[i]]){
+                    duplication[0] = numbers[i];
+                    return true;
                 }
+                swap(numbers,i,numbers[i]);
             }
-            else return false;
         }
+        return false;
+    }
 
-        return true;
+    /**
+     * 1. 分析
+     * 利用 HashSet 解决，从头到尾扫描数组，每次扫描到一个数，判断当前数是否存在 HashSet 中，如果存在，则重复，对 duplication 赋值返回，否则将该数加入到 HashSet 中
+     *
+     * @param numbers
+     * @param length
+     * @param duplication
+     * @return
+     */
+    public static boolean duplicate_method2(int numbers[], int length, int duplication[]) {
+        if (numbers == null || numbers.length == 1) return false;
+        HashSet<Integer> mySet = new HashSet<Integer>();
+        for (int i = 0; i < numbers.length; i++) {
+            if (mySet.contains(numbers[i])) {
+                duplication[0] = numbers[i];
+                return true;
+            }
+            mySet.add(numbers[i]);
+        }
+        return false;
+
     }
 
 }
