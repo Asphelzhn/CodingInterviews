@@ -4,25 +4,6 @@
  */
 
 public class LargeNuminArray {
-    public int MoreThanHalfNum_Solution(int [] array) {
-        int count = 1;
-        int pre = array[0];
-        for (int i = 1; i < array.length; i++) {
-            count = array[i] == pre ? count+1:count-1;
-            if (count == 0){
-                pre = array[i];
-                count = 1;
-            }
-        }
-        int num = 0;
-        for (int i = 0; i < array.length; i++) {
-            if (array[i] == pre){
-                num++;
-            }
-        }
-        return  num > (array.length / 2) ? num: 0;
-
-    }
     public int MoreThanHalfNum_Solution(int[] nums) {
         int majority = nums[0];
         for (int i = 1, cnt = 1; i < nums.length; i++) {
