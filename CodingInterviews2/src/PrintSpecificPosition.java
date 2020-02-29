@@ -3,7 +3,7 @@
  * 数字以0123456789101112131415……的格式序列化到一个字符序列中。在这个序列中，第5位（从0开始计数）是5，第19位是4。请写一个函数，求任意第n为对应的数字。
  */
 public class PrintSpecificPosition {
-    
+
     public static void getDigitalOfN(int n) {
         int index = 1;// 当前走到哪一位了，1：个位，2：十位，3：百位……
         int numbers = index * countOfInteger(index);
